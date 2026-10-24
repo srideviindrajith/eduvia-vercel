@@ -1,0 +1,41 @@
+/* ============ Responsive ============ */
+@media (min-width:1181px) and (max-width:1500px){
+  .main-nav{gap:.1rem}
+  .nav-link{padding:.6rem 1rem}
+  .nav-link{font-size:.92rem}
+}
+@media (max-width:1080px){
+  .tiles{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .orbit{--osz:min(78vw,380px);margin-top:1rem}
+  .features{grid-template-columns:1fr}
+  .cat-banner{grid-template-columns:1fr}
+  .cat-banner .cb-ico{display:none}
+}
+@media (max-width:1180px){
+  /* header becomes two rows: brand + CTA on top, menu scrolls underneath */
+  :root{--header-h:112px}
+  .site-header{flex-wrap:wrap;align-content:center;row-gap:.2rem;padding-top:.5rem}
+  .site-header.is-scrolled{--header-h:104px;height:104px}
+  .brand{order:1}
+  .nav-actions{order:2;margin-left:auto}
+  .main-nav{order:3;width:100%;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--pad));padding-inline:var(--pad);padding-bottom:.3rem}
+  .main-nav::-webkit-scrollbar{display:none}
+  .brand-name{font-size:1.5rem}
+  .brand-mark{width:36px;height:36px}
+}
+@media (max-width:620px){
+  .tiles{grid-template-columns:1fr}
+  .m-learn{grid-template-columns:1fr}
+  .stats{gap:1.4rem}
+  .orbit-badge .chip{width:60px;height:60px;border-radius:19px}
+  .orbit-badge>div{width:60px;margin:-30px 0 0 -30px;transform-origin:30px 30px}
+  .orbit-badge .ico{width:26px;height:26px}
+  .orbit-badge small{display:none}
+  .hero-cta .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .orbit-core,.orbit-ring,.orbit-spin,.orbit-badge>div,.orbit-badge .chip,.orbit-glow,.cat-banner .cb-ico,.cta-band .c-star{animation:none!important}
+}

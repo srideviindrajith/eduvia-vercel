@@ -1,0 +1,42 @@
+/* ============ Intro: living book scene → user opens it → zoom "shoot" → parchment → home ============ */
+#intro{position:fixed;inset:0;z-index:120;background:#e9e9ec;overflow:hidden;visibility:hidden;cursor:pointer;user-select:none;-webkit-user-select:none}
+body[data-stage="intro"] #intro,
+body[data-stage="loading"] #intro{visibility:visible}
+body[data-stage="loading"] #intro{opacity:0}
+body[data-stage="home"] #intro{pointer-events:none}
+
+/* the video never receives pointer events → no hover controls, no PiP badge, no "it's a video" feel */
+.in-stage{position:absolute;inset:0;transform-origin:50% 56%;will-change:transform}
+#introVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+
+.in-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 52%,transparent 45%,rgba(27,10,56,.55) 100%)}
+.in-glow{position:absolute;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(circle,rgba(255,236,170,.5),rgba(183,156,240,.18) 45%,transparent 70%);will-change:transform,opacity}
+.in-light{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(circle at 50% 56%,#fffbe8 0,#ffeaa6 28%,rgba(240,212,138,0) 70%)}
+.in-paper{position:absolute;inset:0;opacity:0;pointer-events:none;background:var(--paper-bg)}
+
+/* HTML UI laid over the scene */
+.in-ui{position:absolute;left:0;right:0;bottom:max(2.2rem,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  pointer-events:none;opacity:0;visibility:hidden;text-align:center}
+.in-tag{font-family:var(--font-head);font-style:italic;font-size:clamp(1.2rem,2.6vw,1.8rem);letter-spacing:.14em;color:#fff6dd;text-shadow:0 2px 18px rgba(27,10,56,.7)}
+.in-open{position:relative;width:64px;height:64px;border-radius:50%;border:0;display:grid;place-items:center;pointer-events:auto;color:var(--ink);
+  background:linear-gradient(145deg,#fff6dd,#f0d48a);box-shadow:0 10px 30px -6px rgba(27,10,56,.6),0 0 0 6px rgba(255,246,221,.18);animation:inPulse 2.2s ease-in-out infinite}
+.in-open .ico{width:28px;height:28px}
+.in-ring{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);transform:rotate(-90deg);fill:none;stroke-width:1.6}
+.in-ring circle{stroke:rgba(255,246,221,.25)}
+.in-ring .in-ring-prog{stroke:#fff6dd;stroke-linecap:round;stroke-dasharray:126;stroke-dashoffset:126}
+.in-hint{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff6dd;text-shadow:0 2px 12px rgba(27,10,56,.8)}
+@keyframes inPulse{50%{transform:scale(1.07)}}
+html.lite .in-open{animation:none}
+
+.skip-intro{position:absolute;right:max(1.2rem,env(safe-area-inset-right));bottom:max(1.2rem,env(safe-area-inset-bottom));z-index:3;opacity:0;visibility:hidden}
+.skip-intro.show{visibility:visible}
+@media (max-width:620px){.in-ui{bottom:4.6rem}}
+
+/* portrait phones: show the whole book instead of cropping the cover */
+@media (max-aspect-ratio:4/5){
+  #intro{background:linear-gradient(180deg,#d9d6e6,#ece9f2)}
+  #introVideo{object-fit:contain;-webkit-mask-image:linear-gradient(transparent 27%,#000 37%,#000 63%,transparent 73%);mask-image:linear-gradient(transparent 27%,#000 37%,#000 63%,transparent 73%)}
+  .in-tag,.in-hint{color:var(--ink);text-shadow:none}
+  .in-vignette{background:radial-gradient(ellipse at 50% 52%,transparent 55%,rgba(27,10,56,.35) 100%)}
+}

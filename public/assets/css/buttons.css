@@ -1,0 +1,54 @@
+/* ============ Buttons (shimmer · magnetic · ripple · icon slide) ============ */
+.btn{
+  --bx:0px;--by:0px;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:.85rem 1.5rem;border-radius:var(--r-pill);border:1.5px solid transparent;
+  font-weight:700;font-size:.98rem;letter-spacing:.01em;text-decoration:none;white-space:nowrap;
+  overflow:hidden;isolation:isolate;
+  transform:translate(var(--bx),var(--by));
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out),background .3s,color .3s,border-color .3s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:active{transform:translate(var(--bx),var(--by)) scale(.96)}
+.btn .ico{transition:transform .35s var(--spring)}
+.btn:hover .ico-slide,.btn:hover>.ico:last-child{transform:translateX(4px)}
+.btn-sm{padding:.6rem 1.1rem;font-size:.88rem}
+.btn-lg{padding:1.05rem 1.9rem;font-size:1.05rem}
+
+/* diagonal shimmer sweep */
+.btn::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);
+  transform:translateX(-120%);transition:transform .8s var(--ease-out);
+}
+.btn:hover::after{transform:translateX(120%)}
+
+.btn-primary{
+  color:#fff;background:linear-gradient(135deg,var(--ink-2),var(--violet));
+  box-shadow:0 10px 24px -8px rgba(109,63,196,.65),inset 0 0 0 1px rgba(240,212,138,.35);
+}
+.btn-primary:hover{box-shadow:0 16px 34px -8px rgba(109,63,196,.8),inset 0 0 0 1px rgba(240,212,138,.7)}
+.btn-gold{
+  color:var(--ink);background:linear-gradient(135deg,var(--gold-lt),var(--gold));
+  box-shadow:0 10px 24px -8px rgba(201,162,75,.8);
+}
+.btn-ghost{
+  color:var(--ink);background:rgba(255,250,240,.6);border-color:rgba(43,22,80,.22);
+}
+.btn-ghost:hover{background:#fff;border-color:var(--gold);box-shadow:var(--sh-2)}
+
+/* click ripple (inserted by JS) */
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.55);transform:scale(0);animation:ripple .7s ease-out forwards;z-index:-1}
+.btn-ghost .ripple{background:rgba(201,162,75,.4)}
+@keyframes ripple{to{transform:scale(1);opacity:0}}
+
+/* toggle state (enrol / save) */
+.btn.is-on{background:linear-gradient(135deg,#2f8f5b,#47b37a);color:#fff;box-shadow:0 10px 24px -8px rgba(47,143,91,.7);border-color:transparent}
+.btn .tick{width:0;overflow:hidden;transition:width .35s var(--spring)}
+.btn.is-on .tick{width:1.15em}
+
+.icon-btn{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);
+  background:rgba(255,250,240,.8);color:var(--ink);transition:transform .35s var(--spring),background .3s,border-color .3s;
+}
+.icon-btn:hover{transform:rotate(90deg) scale(1.08);background:#fff;border-color:var(--gold)}

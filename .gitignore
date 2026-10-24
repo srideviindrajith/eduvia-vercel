@@ -1,0 +1,10 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# misc
+node_modules/
+.vercel/
+.DS_Store
+*.log

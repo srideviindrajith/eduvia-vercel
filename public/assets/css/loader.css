@@ -1,0 +1,41 @@
+/* ============ Custom loader — compass, ink-line progress ============ */
+#loader{position:fixed;inset:0;z-index:200;display:grid;place-items:center;overflow:hidden}
+.ld-door{
+  position:absolute;top:0;bottom:0;width:50.2%;
+  background:
+    radial-gradient(600px 500px at 50% 40%,rgba(109,63,196,.45),transparent 70%),
+    linear-gradient(180deg,#1d0e3a,#2b1650 55%,#1a0d33);
+}
+.ld-door--l{left:0}
+.ld-door--r{right:0}
+.ld-door::before{ /* tiny gold stars */
+  content:"";position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(1.5px 1.5px at 20% 30%,#f0d48a,transparent),radial-gradient(1px 1px at 70% 60%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 80%,#f0d48a,transparent),radial-gradient(1px 1px at 85% 15%,#fff,transparent),radial-gradient(1px 1px at 10% 70%,#fff,transparent);
+  background-size:280px 280px;animation:twinkle 4s ease-in-out infinite alternate;
+}
+.ld-seam{position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(180deg,transparent,var(--gold-lt),transparent);box-shadow:0 0 24px 4px rgba(240,212,138,.6);opacity:.28}
+
+.ld-center{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;width:min(86vw,380px);color:#fff}
+.ld-emblem{position:relative;width:150px;height:150px;display:grid;place-items:center;margin-bottom:1.6rem}
+.ld-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.ld-ring circle{fill:none;stroke-width:2.5}
+.ld-ring-bg{stroke:rgba(240,212,138,.2)}
+.ld-ring-fg{stroke:var(--gold-lt);stroke-linecap:round;stroke-dasharray:339.3;stroke-dashoffset:339.3;filter:drop-shadow(0 0 6px rgba(240,212,138,.9))}
+.ld-compass{width:84px;height:84px;color:var(--gold-lt);animation:spin 9s linear infinite;filter:drop-shadow(0 0 12px rgba(240,212,138,.6))}
+
+.ld-title{display:flex;gap:.12em;font-family:var(--font-head);font-weight:600;font-size:clamp(2.2rem,8vw,3rem);letter-spacing:.2em;color:#fff;padding-left:.2em}
+.ld-title span{display:inline-block;opacity:0;transform:translateY(14px);animation:ld-letter .8s var(--ease-out) forwards}
+.ld-title span:nth-child(1){animation-delay:.15s}.ld-title span:nth-child(2){animation-delay:.25s}.ld-title span:nth-child(3){animation-delay:.35s}
+.ld-title span:nth-child(4){animation-delay:.45s}.ld-title span:nth-child(5){animation-delay:.55s}.ld-title span:nth-child(6){animation-delay:.65s}
+.ld-sub{font-family:var(--font-head);font-style:italic;font-size:1.15rem;color:var(--gold-lt);margin-top:.2rem;opacity:0;animation:ld-fade 1s .9s forwards}
+.ld-bar{width:100%;height:3px;border-radius:3px;background:rgba(255,255,255,.12);margin-top:1.8rem;overflow:hidden}
+.ld-bar i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--violet-lt),var(--gold-lt));box-shadow:0 0 12px var(--gold-lt)}
+.ld-line{display:flex;justify-content:space-between;width:100%;margin-top:.7rem;font-size:.85rem;color:rgba(255,255,255,.72);min-height:1.4em}
+.ld-line b{font-variant-numeric:tabular-nums;color:var(--gold-lt);font-weight:700}
+#ldTip{transition:opacity .3s,transform .3s}
+#ldTip.swap{opacity:0;transform:translateY(6px)}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{from{opacity:.25}to{opacity:.7}}
+@keyframes ld-letter{to{opacity:1;transform:none}}
+@keyframes ld-fade{to{opacity:1}}

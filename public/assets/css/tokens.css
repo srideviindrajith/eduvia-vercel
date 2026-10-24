@@ -1,0 +1,49 @@
+/* ============ Design tokens ============ */
+@font-face{font-family:"Cormorant Garamond";font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:normal;font-display:swap;src:url(../fonts/cormorant-garamond-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/cormorant-garamond-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-weight:600;font-style:italic;font-display:swap;src:url(../fonts/cormorant-garamond-latin-600-italic.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:400;font-style:normal;font-display:swap;src:url(../fonts/dm-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:500;font-style:normal;font-display:swap;src:url(../fonts/dm-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"DM Sans";font-weight:700;font-style:normal;font-display:swap;src:url(../fonts/dm-sans-latin-700-normal.woff2) format("woff2")}
+
+:root{
+  /* parchment + ink + gold: the colours of the intro book */
+  --paper:#f6ead2;
+  --paper-2:#efdfbd;
+  --paper-lt:#fbf4e4;
+  --card:#fffaf0;
+  --ink:#2b1650;
+  --ink-2:#4b2c85;
+  --violet:#6d3fc4;
+  --violet-lt:#b79cf0;
+  --gold:#c9a24b;
+  --gold-lt:#f0d48a;
+  --text:#2a1d44;
+  --muted:#6f5f8a;
+  --line:rgba(43,22,80,.12);
+  --ok:#2f8f5b;
+
+  --font-head:"Cormorant Garamond","Palatino Linotype",Georgia,serif;
+  --font-body:"DM Sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+  --r-sm:10px; --r-md:18px; --r-lg:28px; --r-pill:999px;
+  --sh-1:0 2px 8px rgba(43,22,80,.08);
+  --sh-2:0 12px 32px -10px rgba(43,22,80,.28);
+  --sh-3:0 30px 60px -20px rgba(43,22,80,.45);
+
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+
+  --header-h:84px;
+  --pad:clamp(1.1rem,4vw,3.5rem);
+  --maxw:1240px;
+
+  /* shared by <body>, intro paper and veil so transitions are seamless */
+  --paper-bg:
+    radial-gradient(1200px 700px at 85% -10%, rgba(183,156,240,.30), transparent 60%),
+    radial-gradient(900px 600px at -10% 20%, rgba(240,212,138,.45), transparent 60%),
+    radial-gradient(800px 500px at 50% 120%, rgba(201,162,75,.25), transparent 60%),
+    url("../img/paper.png") 0 0/256px 256px,
+    linear-gradient(180deg,var(--paper-lt),var(--paper));
+}

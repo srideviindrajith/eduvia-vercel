@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Eduvia — The Art of Learning</title>
+  <meta name="description" content="Eduvia — the art of learning. Magical, bite-sized video lessons in maths, science, coding, languages, arts and exam prep.">
+  <meta name="theme-color" content="#2b1650">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/loader.css">
+  <link rel="stylesheet" href="assets/css/intro.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/sections.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/transitions.css">
+  <link rel="stylesheet" href="assets/css/modal.css">
+  <link rel="stylesheet" href="assets/css/extras.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+
+<body data-stage="loading">
+
+  <!-- ===== SVG sprite (icons, compass emblem) ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="compass" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" stroke-width=".9" stroke-dasharray="1.5 2.6"/>
+        <path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43Z" fill="currentColor" stroke="none"/>
+        <path transform="rotate(45 50 50)" d="M50 16 L54 46 L84 50 L54 54 L50 84 L46 54 L16 50 L46 46Z" fill="currentColor" stroke="none" opacity=".5"/>
+        <circle cx="50" cy="50" r="5.5" fill="none" stroke="#2b1650" stroke-width="2"/>
+      </symbol>
+
+      <!-- category + UI icons (stroke style) -->
+      <symbol id="i-maths" viewBox="0 0 24 24"><path d="M18 5H6l7 7-7 7h12"/></symbol>
+      <symbol id="i-science" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></symbol>
+      <symbol id="i-coding" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+      <symbol id="i-languages" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+      <symbol id="i-arts" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.6 0 2.2-1 1.7-2.1s0-2.1 1.5-2.1H17a4 4 0 0 0 4-4C21 7 17 3 12 3z"/><circle cx="7.5" cy="11" r="1" fill="currentColor"/><circle cx="10" cy="7.2" r="1" fill="currentColor"/><circle cx="14.5" cy="7.2" r="1" fill="currentColor"/></symbol>
+      <symbol id="i-exams" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+      <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l5 5L20 7"/></symbol>
+      <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.4c2.2.7 3.5 2.6 3.5 5.6"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-path" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h6a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h6"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#app">Skip to content</a>
+
+  <!-- ===== Scroll progress (ink line) + back to top ===== -->
+  <div id="progress" aria-hidden="true"><i></i></div>
+  <button id="toTop" class="to-top" type="button" aria-label="Back to top">
+    <svg class="ico" aria-hidden="true"><use href="#i-up"/></svg>
+  </button>
+
+  <!-- ===== Page content ===== -->
+  <header id="siteHeader" class="site-header">
+    <a class="brand" href="#/" data-route="home" aria-label="Eduvia — home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#compass"/></svg>
+      <span class="brand-text">
+        <span class="brand-name">Eduvia</span>
+        <small class="brand-tag">the art of learning</small>
+      </span>
+    </a>
+    <nav id="mainNav" class="main-nav" aria-label="Main navigation"></nav>
+    <div class="nav-actions">
+      <button class="icon-btn search-btn" id="searchBtn" type="button" aria-label="Search lessons (press /)">
+        <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+      </button>
+      <button class="btn btn-primary btn-sm nav-cta" id="joinBtn" type="button">
+        <span>Join free</span><svg class="ico" aria-hidden="true"><use href="#i-sparkle"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="app" tabindex="-1"><div id="view"></div></main>
+
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <svg class="brand-mark" aria-hidden="true"><use href="#compass"/></svg>
+        <div><strong>Eduvia</strong><span>The art of learning</span></div>
+      </div>
+      <p class="footer-note">Curious minds welcome. Open the book, begin your story.</p>
+      <button class="btn btn-ghost btn-sm" id="liteToggle" type="button" aria-pressed="false" title="Turn heavy animations down on slower devices">
+        <svg class="ico" aria-hidden="true"><use href="#i-sparkle"/></svg><span>Effects: Full</span>
+      </button>
+      <button class="btn btn-ghost btn-sm" id="replayIntro" type="button">
+        <svg class="ico" aria-hidden="true"><use href="#i-replay"/></svg><span>Replay intro</span>
+      </button>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> Eduvia. All rights reserved.</p>
+  </footer>
+
+  <!-- ===== Intro (video → shoot → home) ===== -->
+  <section id="intro" aria-label="Eduvia intro animation">
+    <div class="in-stage" id="inStage">
+      <video id="introVideo" muted playsinline disablepictureinpicture disableremoteplayback controlslist="nodownload noremoteplayback nofullscreen" preload="auto" poster="assets/video/poster.jpg" tabindex="-1"></video>
+    </div>
+    <div class="in-vignette"></div>
+    <div class="in-glow" id="inGlow"></div>
+    <div class="in-light"></div>
+    <div class="in-ui" id="inUi" aria-live="polite">
+      <p class="in-tag">the art of learning</p>
+      <button id="openBook" class="in-open" type="button" aria-label="Open the book">
+        <svg class="in-ring" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20"/><circle class="in-ring-prog" cx="22" cy="22" r="20"/></svg>
+        <svg class="ico" aria-hidden="true"><use href="#i-book"/></svg>
+      </button>
+      <p class="in-hint">Touch the book to open it</p>
+    </div>
+    <div class="in-paper"></div>
+    <button id="skipIntro" class="btn btn-ghost btn-sm skip-intro" type="button">
+      <span>Skip intro</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </button>
+  </section>
+
+  <!-- ===== Page-to-page veil (category transitions) ===== -->
+  <div id="veil" aria-hidden="true">
+    <div class="veil-paper"></div>
+    <div class="veil-edge"></div>
+    <div class="veil-ring"></div>
+    <div class="veil-card">
+      <svg class="veil-icon" aria-hidden="true"><use id="veilIcon" href="#i-book"/></svg>
+      <p class="veil-kicker" id="veilKicker">Opening</p>
+      <h2 class="veil-title" id="veilTitle"></h2>
+      <p class="veil-sub" id="veilSub"></p>
+    </div>
+  </div>
+
+  <!-- ===== Search ===== -->
+  <div id="search" class="search" hidden role="dialog" aria-modal="true" aria-label="Search lessons">
+    <div class="search-backdrop" data-close-search></div>
+    <div class="search-panel">
+      <label class="search-field">
+        <svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="searchInput" type="search" placeholder="Search lessons, subjects, mentors…" autocomplete="off" spellcheck="false">
+        <kbd>Esc</kbd>
+      </label>
+      <div id="searchResults" class="search-results" role="listbox"></div>
+    </div>
+  </div>
+
+  <!-- ===== Modal ===== -->
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" id="modalPanel"></div>
+  </div>
+
+  <!-- ===== Loader ===== -->
+  <div id="loader" role="status" aria-live="polite">
+    <div class="ld-door ld-door--l"></div>
+    <div class="ld-door ld-door--r"></div>
+    <div class="ld-seam"></div>
+    <div class="ld-center">
+      <div class="ld-emblem">
+        <svg class="ld-ring" viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="ld-ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="ld-ring-fg" id="ldRing" cx="60" cy="60" r="54"/>
+        </svg>
+        <svg class="ld-compass" aria-hidden="true"><use href="#compass"/></svg>
+      </div>
+      <h1 class="ld-title" aria-label="Eduvia"><span>E</span><span>D</span><span>U</span><span>V</span><span>I</span><span>A</span></h1>
+      <p class="ld-sub">the art of learning</p>
+      <div class="ld-bar"><i id="ldBar"></i></div>
+      <p class="ld-line"><span id="ldTip">Opening the book of knowledge…</span><b id="ldPct">0%</b></p>
+    </div>
+  </div>
+
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/perf.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/fx.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/loader.js"></script>
+  <script src="assets/js/intro.js"></script>
+  <script src="assets/js/transitions.js"></script>
+  <script src="assets/js/cards.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/views.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

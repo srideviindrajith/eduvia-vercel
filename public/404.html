@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Eduvia</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/buttons.css">
+  <style>
+    body{display:grid;place-items:center;min-height:100vh;text-align:center;padding:2rem}
+    .nf{max-width:520px}
+    .nf svg{width:96px;height:96px;margin:0 auto 1rem;color:var(--gold);animation:spin 20s linear infinite}
+    .nf h1{font-size:clamp(3rem,10vw,5rem)}
+    .nf p{color:var(--muted);margin:.8rem 0 1.8rem;font-size:1.1rem}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body style="overflow:auto">
+  <svg width="0" height="0" style="position:absolute"><defs><symbol id="compass" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/><path d="M50 4 L57 43 L96 50 L57 57 L50 96 L43 57 L4 50 L43 43Z" fill="currentColor"/><circle cx="50" cy="50" r="5.5" fill="none" stroke="#2b1650" stroke-width="2"/></symbol></defs></svg>
+  <main class="nf">
+    <svg aria-hidden="true"><use href="#compass"/></svg>
+    <h1>Lost in the library?</h1>
+    <p>This page isn't in our book. Let's get you back to where the learning begins.</p>
+    <a class="btn btn-primary btn-lg" href="/"><span>Back to Eduvia</span></a>
+  </main>
+</body>
+</html>

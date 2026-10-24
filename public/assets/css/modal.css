@@ -1,0 +1,37 @@
+/* ============ Modal (lesson preview / join) ============ */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:1rem}
+.modal[hidden]{display:none}
+.modal-backdrop{position:absolute;inset:0;background:rgba(20,8,45,.74)}
+.modal-panel{
+  position:relative;width:min(100%,900px);max-height:calc(100vh - 2rem);overflow:auto;border-radius:var(--r-lg);
+  background:var(--paper-lt);box-shadow:0 40px 90px -20px rgba(0,0,0,.65);border:1px solid rgba(201,162,75,.5);
+}
+.modal-panel.narrow{width:min(100%,480px)}
+.modal-close{position:absolute;right:.9rem;top:.9rem;z-index:5}
+.m-player{position:relative;aspect-ratio:16/9;max-height:44vh;width:100%;background:#12062a}
+.m-player video,.m-player img{width:100%;height:100%;object-fit:cover}
+.m-note{position:absolute;left:.8rem;top:.8rem;font-size:.72rem;color:#fff;background:rgba(20,8,45,.7);padding:.25rem .6rem;border-radius:var(--r-pill);pointer-events:none}
+.m-body{padding:clamp(1.2rem,3vw,2rem)}
+.m-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+.m-tags span{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;padding:.3rem .8rem;border-radius:var(--r-pill);background:rgba(109,63,196,.12);color:var(--ink-2)}
+.m-body h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:.6rem}
+.m-body p{color:var(--muted)}
+.m-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.5rem}
+.m-learn{margin-top:1.4rem;display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem 1.4rem;list-style:none;padding:0}
+.m-learn li{display:flex;gap:.55rem;align-items:flex-start;font-size:.93rem}
+.m-learn .ico{color:var(--ok);margin-top:.2rem}
+
+/* join form */
+.join{padding:2.2rem 1.8rem 2rem;text-align:center}
+.join .j-mark{width:64px;height:64px;margin:0 auto .8rem;color:var(--gold);animation:spin 20s linear infinite}
+.join h2{font-size:2.2rem;margin-bottom:.4rem}
+.join p{color:var(--muted);margin-bottom:1.4rem}
+.join form{display:flex;flex-direction:column;gap:.8rem}
+.field{width:100%;padding:.9rem 1.2rem;border-radius:var(--r-pill);border:1.5px solid var(--line);background:#fff;font:inherit;transition:border-color .3s,box-shadow .3s}
+.field:focus{outline:none;border-color:var(--violet);box-shadow:0 0 0 4px rgba(109,63,196,.15)}
+.join .done{display:none;flex-direction:column;align-items:center;gap:.6rem}
+.join.is-done form,.join.is-done .j-intro{display:none}
+.join.is-done .done{display:flex}
+.done .big-tick{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:var(--ok);color:#fff}
+.done .big-tick .ico{width:38px;height:38px;stroke-width:2.6;stroke-dasharray:30;stroke-dashoffset:30;animation:draw .6s .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
